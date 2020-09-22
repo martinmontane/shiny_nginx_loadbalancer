@@ -1,0 +1,53 @@
+version: '3'
+services:
+  shiny-proxy1:
+      build:
+        context: ./shiny-nodes
+        args:
+          - SITE_SHINY_USER_ID
+      tty: true
+      volumes:
+        - ./shiny-nodes/AppsToPublish:/srv/shiny-server:ro
+
+  shiny-proxy2:
+      build:
+        context: ./shiny-nodes
+        args:
+          - SITE_SHINY_USER_ID
+      tty: true
+      volumes:
+        - ./shiny-nodes/AppsToPublish:/srv/shiny-server:ro
+
+  shiny-proxy3:
+      build:
+        context: ./shiny-nodes
+        args:
+          - SITE_SHINY_USER_ID
+      tty: true
+      volumes:
+        - ./shiny-nodes/AppsToPublish:/srv/shiny-server:ro
+
+  shiny-proxy4:
+      build:
+        context:  ./shiny-nodes
+        args:
+          - SITE_SHINY_USER_ID
+      tty: true
+      volumes:
+        - ./shiny-nodes/AppsToPublish:/srv/shiny-server:ro
+
+  loadbalancer:
+      build: ./nginx-proxy
+      tty: true
+      links:
+          - shiny-proxy1
+          - shiny-proxy2
+          - shiny-proxy3
+          - shiny-proxy4
+      volumes:
+          - ./nginx-proxy/data/nginx/nginx.conf:/etc/nginx/nginx.conf
+
+networks:
+  default:
+    external:
+      name: nginx_network
