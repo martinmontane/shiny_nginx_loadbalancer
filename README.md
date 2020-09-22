@@ -21,7 +21,7 @@ Our shiny apps would not be the same without our R packages. The Dockerfile in t
 Ok, so port 80 of the nginx_network is hosting the load balancer that will gently deliver each user to a specific node. We need to communicate to this network from the outside. There are several ways to do it, in this project there is a nginxSSL that has everything to build a nginx server that communicates with the port 80 of the network and that communicates with SSL with the clients ! To do so, one has to modify the domain names that will be linked to the server in the **init-letsencrypt.sh** file and execute it: it will create dummy certificates for the domains, which are needed for the certbot to renew.
 
 Once you did this, you just need to 'docker-compose up' the docker-compose file in the nginxSSL folder. Now you have everything working ! If you want to check if all containers are running, you should see something like the following if you execute *docker ps*
-
+```
 CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                  PORTS                                      NAMES
 9b6a58b5b196        nginx:1.15-alpine      "/bin/sh -c 'while :…"   5 seconds ago       Up Less than a second   0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   nginxssl_nginx_1
 5ab151d8431a        certbot/certbot        "/bin/sh -c 'trap ex…"   5 seconds ago       Up Less than a second   80/tcp, 443/tcp                            nginxssl_certbot_1
@@ -30,7 +30,7 @@ df7f6dfbc7fa        nginxlb_shiny-proxy2   "/bin/sh -c '/usr/bi…"   8 weeks ag
 1788fc724ecf        nginxlb_shiny-proxy3   "/bin/sh -c '/usr/bi…"   8 weeks ago         Up 8 weeks              3838/tcp                                   nginxlb_shiny-proxy3_1
 b4ff4f50cdd9        nginxlb_shiny-proxy4   "/bin/sh -c '/usr/bi…"   8 weeks ago         Up 8 weeks              3838/tcp                                   nginxlb_shiny-proxy4_1
 745ff900ed36        nginxlb_shiny-proxy1   "/bin/sh -c '/usr/bi…"   8 weeks ago         Up 8 weeks              3838/tcp                                   nginxlb_shiny-proxy1_1
-
+```
 If you already have a server that has its own nginx, you might want to add the nginx_network to it.
 
 ## Enjoying it
