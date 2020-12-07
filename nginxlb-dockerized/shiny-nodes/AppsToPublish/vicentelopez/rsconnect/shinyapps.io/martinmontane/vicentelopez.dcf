@@ -1,0 +1,13 @@
+name: vicentelopez
+title: vicentelopez
+username:
+account: martinmontane
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3155136
+bundleId: 3957039
+url: https://martinmontane.shinyapps.io/vicentelopez/
+when: 1607375816.30604
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: auxiliares (vieja).R|Columnas.xlsx|data.R|datos_2020_11_10.csv|datos.rds|datos2020_10_20.RData|Mapa de Organizaciones Sociales de Vicente López MARTIN.xlsx|Mapa de Organizaciones Sociales de Vicente López.xlsx|planilla_final_2020_10_27_raw.xlsx|icons/_ionicons_svg_ios-medkit.svg|icons/wheelchair.svg
